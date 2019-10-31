@@ -5,8 +5,7 @@
 
 When we are working with a small set of data values, it is often possible to discuss these values individually. However, when we are dealing or working with large sets of data in real-world problems, we prefer to have some features that can summarize and represent the data in a concise format.
 
-In this lesson, we will look at such measures first for a single data variable. e.g., the salary of workers in a particular factory. These measures will include measures of central tendency and measures of dispersion.
-
+In this lesson, we will look at such measures first for a single data variable. e.g., the average Yelp or Google rating, as seen previously. We'll formalize the concept of average or mean in this lesson, along with some other _measures of central tendency_. 
 
 ## Objectives
 You will be able to:
@@ -24,15 +23,13 @@ There are three main measures of central tendency: the mean, the median, and the
 The **Mean** or **Arithmetic Average** is the value obtained by dividing the sum of all the data by the total number of data points as shown in the formula below:
 
 $$ 
-\Large\bar X = \dfrac{\sum X}{N} $$
+\large\bar X = \dfrac{\sum X}{n} $$
 
-> Yes, we're using the dreaded "mathematical notation". It's OK. It's just a concise way to write things down. It's one of the reasons (along with long, confusing model names like "Recurrent Neural Networks") that Data Scientists make so much money. The math and long words scare people away from ideas that are actually pretty straightforward!
-
-So if you're a math whiz, great. If not, take a little time to look at and unpack the formulas we show in this course. Over time it'll become second nature and that's going to be really important as a practicing Data Scientist.
+Your understanding of the summation symbol immediately comes in handy! If you're a math whiz, great. If not, take a little time to look at and unpack the formulas we show in this course. Over time it'll become second nature and that's going to be really important as a practicing Data Scientist.
 
 Let's start with the $\bar{x}$ (x-bar) - the bar over the top just means "mean of the sample".   
 
-The mean value, shown as $\bar{x}$ (x-bar) for a vector $X$ is achieved by adding together all values of $X$ (shown as $\sum{X}$),  and dividing $N$ (number of observations).
+The mean value, shown as $\bar{x}$ (x-bar) for a vector $X$ is achieved by adding together all values of $X$ (shown as $\sum{X}$),  and dividing it by $n$ (number of observations).
 e.g. Let’s look at a very simple set of data representing the retirement age of 11 individuals
 ```
 54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60
@@ -41,22 +38,15 @@ e.g. Let’s look at a very simple set of data representing the retirement age o
 The mean value is calculated as: 
 1.  Adding together all the values 
 ```
-54+54+54+55+56+57+57+58+58+60+60 = 623 
+54 + 54 + 54 + 55 + 56 + 57 + 57 + 58 + 58 + 60 + 60 = 623 
 ```
+
 2. Dividing by the numbers of observations
 ```
 623/11 = 56.6
 ```
 
-For most people, the "mean" is what they think of as the "average". If I got paid \$20k and you got paid \$40k last year our "average" salary was \$30k.
-
-### Sample Mean vs. Population Mean
-
-Think back to the retirement age example above. The data set only included information about 11 individuals. There are certainly more than 11 people who retired out there but, for whatever reason, their data are not available. In mathematical terms, you would say the 11 individuals are a **sample** of the entire **population** of people who retired.  
-
-As a Data Scientist, you will often run into situations where you do not have access to data on the entire population of people you might be interested in. Instead you will only have access to a smaller sample from the entire population. It will be your job to estimate features of the population based on the sample. As you might imagine, as the sample size increases (in other words: a larger fraction of the population is sampled), it approximates the population more accurately. 
-
-The difference between sample and population does not impact the way you calculate mean - you still divide the sum of all values by the total number of values - but it is important to distinguish between a sample mean and population mean. This is why there are different mathematical symbols to represent them. The sample mean is represented by the $\bar{x}$ described above. The population mean is represented by the Greek letter, $\mu$ (mu, pronounced "mew"). The distinction between sample and population metrics will pop up every now and then throughout the course so keep this in the back of your head.   
+For most people, the "mean" is what they think of as the "average". If I got paid \$20k and you got paid \$40k last year our "average" salary was \$30k. 
 
 ## Median
 
@@ -100,7 +90,7 @@ For the sample data above, let's draw a histogram for retirement ages.
 ```python
 import matplotlib.pyplot as plt
 x = [54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 60]
-plt.hist(x, bins=5)
+plt.hist(x, bins = 5, edgecolor = "black" )
 plt.title("Retirement Ages")
 plt.show()
 ```
@@ -140,7 +130,7 @@ Outliers are extreme or unusual data values that are notably different from the 
 Let's look again at our retirement dataset, but with one difference; the last observation of 60 years has been replaced with a retirement age of 81 years. 
 
 ```
-54, 54, 54, 55, 56, 57, 57, 58, 58, 60, **81**
+54, 54, 54, 55, 56, 57, 57, 58, 58, 60, 81
 ```
 
 The new value is unusual as it is much higher than the other values, and hence considered an *outlier*. 
